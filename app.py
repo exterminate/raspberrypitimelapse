@@ -2,6 +2,7 @@ import time
 from time import sleep, strftime, gmtime, localtime
 import picamera 
 import emails
+import usernamedetails
 
 message = emails.html(html="<p>Hi!<br>Here is your image...",
                        subject="Image",
@@ -18,7 +19,7 @@ with picamera.PiCamera() as camera:
         message.attach(data=open(thefilename), filename=thefilename)
 	counter += 1
         if counter > 3:
-            r = message.send(to='ian.coates@gmail.com', smtp={"host": "smtp.gmail.com", "port": 465, "ssl": True, "user": "ian.coates", "password": "Gm5Warbler", "timeout": 5})
+            r = message.send(to=details.email, smtp={"host": "smtp.gmail.com", "port": 465, "ssl": True, "user": details.user, "password": details.password, "timeout": 5})
             assert r.status_code == 250
             break   
         sleep(30) 
