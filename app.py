@@ -6,7 +6,7 @@ import usernamedetails
 
 message = emails.html(html="<p>Hi!<br>Here is your image...",
                        subject="Image",
-                       mail_from=('Ian', 'ian.coates@gmail.com'))
+                       mail_from=('Ian', details.email))
 
 counter = 0
 
