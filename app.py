@@ -5,6 +5,8 @@ import emails
 from usernamedetails import Und
 import os
 
+FPS_IN = 10
+FPS_OUT = 24
 
 details = Und()
 
