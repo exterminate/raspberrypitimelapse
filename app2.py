@@ -2,7 +2,7 @@ import os
 import time
 import emails
 from usernamedetails import Und
-
+details = Und()
 FRAMES = 10
 FPS_IN = 10
 FPS_OUT = 24
