@@ -2,7 +2,9 @@ import time
 from time import sleep, strftime, gmtime, localtime
 import picamera 
 import emails
-import usernamedetails
+from usernamedetails import Und
+
+details = Und()
 
 message = emails.html(html="<p>Hi!<br>Here is your image...",
                        subject="Image",
