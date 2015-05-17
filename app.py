@@ -22,11 +22,11 @@ with picamera.PiCamera() as camera:
     for thefilename in camera.capture_continuous('img{counter:03d}.jpg'):
         print(strftime("%H",localtime()))
         print('Captured %s' % thefilename)
-        message.attach(data=open(thefilename), filename=thefilename)
+        # message.attach(data=open(thefilename), filename=thefilename)
 	counter += 1
         if counter > 3:
-            r = message.send(to=details.email, smtp={"host": "smtp.gmail.com", "port": 465, "ssl": True, "user": details.user, "password": details.password, "timeout": 5})
-            assert r.status_code == 250
+            #r = message.send(to=details.email, smtp={"host": "smtp.gmail.com", "port": 465, "ssl": True, "user": details.user, "password": details.password, "timeout": 5})
+            #assert r.status_code == 250
             break   
         sleep(30) 
 
