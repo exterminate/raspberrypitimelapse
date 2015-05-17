@@ -3,6 +3,8 @@ from time import sleep, strftime, gmtime, localtime
 import picamera 
 import emails
 from usernamedetails import Und
+import os
+
 
 details = Und()
 
@@ -25,3 +27,9 @@ with picamera.PiCamera() as camera:
             assert r.status_code == 250
             break   
         sleep(30) 
+
+os.system("avconv -r %s -i image%s.jpg -r %s -vcodec libx264 -crf 20 -g 15 -vf crop=2592:1458,scale=1280:720 timelapse.mp4"%(FPS_IN,'%7d',FPS_OUT))
+message.attach(data=open(thefilename), filename="timelapse.mp4")
+r = message.send(to=details.email, smtp={"host": "smtp.gmail.com", "port": 465, "ssl": True, "user": details.user, "password": details.password, "timeout": 5})
+assert r.status_code == 250
+            
