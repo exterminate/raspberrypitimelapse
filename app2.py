@@ -1,15 +1,18 @@
 ############ working
 import os
+from datetime import datetime
 import time
 import emails
 from usernamedetails import Und
 details = Und()
-FRAMES = 24
-FPS_IN = 12
+FRAMES = 36
+FPS_IN = 6
 FPS_OUT = 12
 TIMEBETWEEN = 12
 FILMLENGTH = float(FRAMES / FPS_IN)
 
+date_now = datetime.now()
+date_now_f = "{}-{}".format(date_now.day, date_now.month)
 
 frameCount = 0
 while frameCount < FRAMES:
@@ -26,6 +29,6 @@ thefilename = "timelapse.mp4"
 
 os.system("avconv -r %s -i image%s.jpg -r %s -vcodec libx264 -crf 20 -g 15 -vf crop=1296:729,scale=1280:720 timelapse.mp4"%(FPS_IN,'%7d',FPS_OUT))
 
-message.attach(data=open(thefilename), filename="timelapse.mp4")
+message.attach(data=open(thefilename), filename="timelapse{}.mp4".format(date_now_f))
 r = message.send(to=details.email, smtp={"host": "smtp.gmail.com", "port": 465, "ssl": True, "user": details.user, "password": details.password, "timeout": 5})
 assert r.status_code == 250
