@@ -7,7 +7,7 @@ from usernamedetails import Und
 details = Und()
 FRAMES = 36
 FPS_IN = 6
-FPS_OUT = 12
+FPS_OUT = 6
 TIMEBETWEEN = 128
 FILMLENGTH = float(FRAMES / FPS_IN)
 
