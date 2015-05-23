@@ -8,11 +8,13 @@ details = Und()
 FRAMES = 36
 FPS_IN = 6
 FPS_OUT = 12
-TIMEBETWEEN = 12
+TIMEBETWEEN = 128
 FILMLENGTH = float(FRAMES / FPS_IN)
 
 date_now = datetime.now()
-date_now_f = "{}-{}".format(date_now.day, date_now.month)
+date_now_f = "{}-{}-{}".format(date_now.day, date_now.month, date_now.year)
+
+print "{}:{}".format(date_now.hour,date_now.minute)
 
 frameCount = 0
 while frameCount < FRAMES:
@@ -21,11 +23,13 @@ while frameCount < FRAMES:
     frameCount += 1
     time.sleep(TIMEBETWEEN - 6) #Takes roughly 6 seconds to take a picture
 
-message = emails.html(html="<p>Hi!<br>Here is your image...",
+message = emails.html(html="<p>Hi!<br>Here is your video...",
                        subject="Image",
                        mail_from=('Ian', details.email))
 thefilename = "timelapse.mp4"
 #message.attach(data=open(thefilename), filename="timelapse.mp4")
+
+print "{}:{}".format(datetime.now().hour,datetime.now().minute)
 
 os.system("avconv -r %s -i image%s.jpg -r %s -vcodec libx264 -crf 20 -g 15 -vf crop=1296:729,scale=1280:720 timelapse%s.mp4"%(FPS_IN,'%7d',FPS_OUT,date_now_f))
 
