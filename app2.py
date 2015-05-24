@@ -5,7 +5,7 @@ import time
 import emails
 from usernamedetails import Und
 details = Und()
-FRAMES = 36
+FRAMES = 6 #36
 FPS_IN = 6
 FPS_OUT = 6
 TIMEBETWEEN = 128
