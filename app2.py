@@ -8,10 +8,10 @@ from random import randint
 
 details = Und()
 
-FRAMES = 6 #36
+FRAMES = 36 #36
 FPS_IN = 6
 FPS_OUT = 6
-TIMEBETWEEN = 12
+TIMEBETWEEN = 120
 FILMLENGTH = float(FRAMES / FPS_IN)
 
 date_now = datetime.now()
